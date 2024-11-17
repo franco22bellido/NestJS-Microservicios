@@ -7,7 +7,7 @@ interface EnvVars {
 
 const envsSchema = joi
   .object({
-    PORT: joi.number().required,
+    PORT: joi.number().required(),
   })
   .unknown(true);
 
@@ -17,7 +17,6 @@ if (error) {
   throw new Error(`Config validation error: ${error.message}}`);
 }
 const envVars: EnvVars = value;
-console.log(`PORT : `, process.env.PORT);
 export const envs = {
   port: envVars.PORT,
 };
